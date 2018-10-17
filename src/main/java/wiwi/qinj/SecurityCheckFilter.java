@@ -22,11 +22,9 @@ public class SecurityCheckFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        boolean isReturnErrorInfo = false;  //是否要返回错误码
         String errorInfo = null;       //返回的错误码信息
         // 未登录或session失效
-        if (!CommAction.isLogin()) {
-            isReturnErrorInfo = true;
+        if (!CommAction.isLogin() && !CommAction.isAllowAnonymous()) {
             errorInfo = "用户未登录:)";
             //强制设置报文头为json
             response.setHeader("Content-Type", "application/json;charset=UTF-8");

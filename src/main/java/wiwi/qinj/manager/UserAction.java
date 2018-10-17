@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import lombok.extern.slf4j.Slf4j;
 import wiwi.qinj.CommAction;
 import wiwi.qinj.domain.User;
-import wiwi.qinj.utils.RedisService;
 
 /**
  * @author Wisya
@@ -27,8 +26,6 @@ public class UserAction extends CommAction {
 
     @Resource
     UserMapper userMapper;
-    @Resource
-    RedisService redisService;
 
 
     @RequestMapping("/createUser")
@@ -60,7 +57,7 @@ public class UserAction extends CommAction {
         if (user != null) {
             // 后台保存session
             model.addAttribute(CommAction.SESSION_USER_INFO, user);
-            return SUCCESS;//返回所有有权限的菜单请求
+            return "user";//返回所有有权限的菜单请求
         } else {// 运营人员查询失败
             //
             return "登陆失败";

@@ -26,8 +26,28 @@ public class CommAction {
 
     int count = 100;
 
+    /***
+     * 允许匿名访问的页面
+     */
+    public static final String[] ALLOW_ANONYMOUS_LIST = {"/login", "/logout"};
+
+
     public static boolean isLogin() {
         return getSessionAttribute(SESSION_USER_INFO) != null;
+    }
+
+    /**
+     * 判断当前请求是否为允许匿名访问，不需要授权也可访问
+     * @return
+     */
+    public static boolean isAllowAnonymous() {
+        String resource = currentRequest().getRequestURI();
+        //不需要权限认证的路径
+        for (String allowedUrl : ALLOW_ANONYMOUS_LIST) {
+            if (resource.contains(allowedUrl)) //访问路径在范围内
+                return true;
+        }
+        return false;
     }
 
     /***

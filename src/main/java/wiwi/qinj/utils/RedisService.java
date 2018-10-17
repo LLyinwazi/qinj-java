@@ -7,7 +7,6 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import redis.clients.jedis.Jedis;
@@ -21,7 +20,7 @@ import redis.clients.jedis.Pipeline;
  * @buildTime 2018-10-07 16:17
  */
 @Slf4j
-@Service
+//@Service
 public class RedisService {
 
 
