@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>添加优惠券</title>
+</head>
+<body>
+
+<form action="/coupon/add" method="post" enctype="multipart/form-data">
+
+    名称：<input type="text" name="couponName" value="一个测试优惠券">
+    <div/>
+    原价：<input type="text" name="prePrice" value="5000">
+    <div/>
+    优惠价：<input type="text" name="realPrice" value="3500">
+    <div/>
+    总数量：<input type="text" name="totalCount" value="60">
+    <div/>
+    图片：<input type="file" name="picture_file">
+    <div/>
+    描述：<input type="text" name="description" value="一个描述">
+    <div/>
+    <input type="submit" name="提交">
+</form>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+</head>
+<body>
+
+<h1>USer.html</h1>
+
+<form action="/login" method="post">
+    手机号:<input name="phone" th:type="String"> <br/>
+    密码:<input name="password" th:type="String"> <br/>
+    <input th:value="提提交" type="submit">
+</form>
+
+</body>
+</html>
