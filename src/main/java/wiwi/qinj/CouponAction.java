@@ -1,15 +1,14 @@
 package wiwi.qinj;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,6 +30,9 @@ import wiwi.qinj.utils.IOUtils;
 @Controller
 @Slf4j
 public class CouponAction extends CommAction {
+
+    @Value("${web.upload_path}")
+    private String coupon_folder;
 
     @Resource
     CouponMapper couponMapper;
@@ -73,9 +75,12 @@ public class CouponAction extends CommAction {
         try {
             byte[] bytes = picture.getBytes();
             String file_name = IDGenerator.nextId() + ".png";
+            log.debug("----------file_name=" + file_name);
+            log.debug("----------pic_base_path=" + coupon_folder);
             // 保存文件
-            String path = IOUtils.write2file(bytes, ResourceUtils.getFile("classpath:static/coupon_pic/") + File.separator + file_name);
-            coupon.setPicture("/coupon_pic/" + file_name);
+            String path = IOUtils.write2file(bytes, coupon_folder + file_name);
+            log.debug("-------write2file end------path=" + path);
+            coupon.setPicture("/" + file_name);
         } catch (IOException e) {
         }
         couponMapper.createCoupon(coupon);
@@ -97,7 +102,6 @@ public class CouponAction extends CommAction {
     public String page(Model model) {
         log.debug("-------------page begin:--------------");
         model.addAttribute("coupons", couponMapper.getAllCoupons());
-        model.addAttribute("host", "https://" + getIp());
         return "coupon";
     }
 

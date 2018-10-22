@@ -83,7 +83,7 @@
         <td th:text="${coupon.realPrice}"></td>
         <td th:text="${#dates.format(coupon.createTime,'yyyy-MM-dd HH:mm:ss')}"></td>
         <td th:text="${coupon.totalCount}"></td>
-        <td><img th:src="@{${coupon.picture}}"/></td>
+        <td><img th:src="${coupon.picture}"/></td>
         <td th:text="${coupon.description}"></td>
         <td th:text="${couponStat.index}"></td>
         <td th:text="${couponStat.size}"></td>

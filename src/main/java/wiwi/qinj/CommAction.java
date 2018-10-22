@@ -18,11 +18,6 @@ import lombok.extern.slf4j.Slf4j;
 public abstract class CommAction {
 
     /**
-     * 项目前缀
-     */
-    public static final String PREFIX = "qinj:";
-
-    /**
      * 响应成功
      */
     public static final String SUCCESS = "0000";
@@ -34,7 +29,7 @@ public abstract class CommAction {
     /***
      * 允许匿名访问的页面
      */
-    public static final String[] ALLOW_ANONYMOUS_LIST = {"/login", "/logout", "/login.html", "/logout.html", "favicon.ico"};
+    public static final String[] ALLOW_ANONYMOUS_LIST = {"/login", "/logout", "/login.html", "/logout.html", "/favicon.ico"};
 
     public static final String[] Allow_Anonymous_Fouder = {"/coupon_pic"};
 

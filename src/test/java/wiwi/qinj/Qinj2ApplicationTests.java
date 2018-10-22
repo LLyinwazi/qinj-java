@@ -41,6 +41,8 @@ public class Qinj2ApplicationTests {
         File file2 = ResourceUtils.getFile("classpath:static/coupon_pic/");
         System.out.println("--1>" + file2.isDirectory());
         System.out.println("--2>" + file2.exists());
+        System.out.println("--21>" + file2.getPath());
+        System.out.println("--22>" + file2.toString());
         System.out.println("--3>" + ResourceUtils.getFile("classpath:12.gif").exists());
     }
 
